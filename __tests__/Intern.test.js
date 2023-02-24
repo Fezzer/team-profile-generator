@@ -1,4 +1,28 @@
+const Employee = require("../lib/Employee");
 const Intern = require("../lib/Intern");
+
+test("Is instance of the Employee class", () =>{
+  // Arrange
+  const intern = new Intern();
+
+  // Assert
+  expect(intern).toBeInstanceOf(Employee);
+});
+
+test("Base class is initialised", () => {
+  // Arrange
+  const name = "Bob";
+  const id = 1;
+  const email = "bob@somewhere.com"
+  
+  // Act
+  const intern = new Intern(name, id, email, "");
+
+  // Assert
+  expect(intern.name).toBe(name);
+  expect(intern.id).toBe(id);
+  expect(intern.email).toBe(email);
+});
 
 test("Can set school via constructor", () => {
   const testValue = "UCLA";

@@ -1,4 +1,28 @@
+const Employee = require("../lib/Employee");
 const Engineer = require("../lib/Engineer");
+
+test("Is instance of the Employee class", () =>{
+  // Arrange
+  const engineer = new Engineer();
+
+  // Assert
+  expect(engineer).toBeInstanceOf(Employee);
+});
+
+test("Base class is initialised", () => {
+  // Arrange
+  const name = "Bob";
+  const id = 1;
+  const email = "bob@somewhere.com"
+  
+  // Act
+  const engineer = new Engineer(name, id, email, "");
+
+  // Assert
+  expect(engineer.name).toBe(name);
+  expect(engineer.id).toBe(id);
+  expect(engineer.email).toBe(email);
+});
 
 test("Can set GitHUb account via constructor", () => {
   const testValue = "GitHubUser";
