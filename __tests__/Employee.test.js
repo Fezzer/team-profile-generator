@@ -88,12 +88,56 @@ describe("getEmail", () => {
 describe("getRole", () => {
   it("returns \"Employee\"", () => {
     // Arrange
-    const employee = new Employee();
-
+    
     // Act
-    const result = employee.getRole();
+    const result = Employee.getRole();
     
     // Assert
     expect(result).toBe("Employee");
+  });
+});
+
+describe("generateMessage", () => {
+  it.each`
+  property  | message
+  ${"name"} | ${"Please enter the employee's name"}
+  ${"ID"}   | ${"Please enter the employee's ID"}
+  `("returns the message using the specified property", ({ property, message }) => {
+    // Arrange
+
+    // Act
+    const result = Employee.generateMessage(property);
+
+    // Assert
+    expect(result).toBe(message);
+  });
+});
+
+describe("generateQuestions", () => {
+  it("returns an array of questions 3 questions", () => {
+    // Arrange
+
+    // Act
+    const result = Employee.generateQuestions();
+
+    // Assert
+    expect(result).toHaveLength(3);
+  });
+
+  it.each`
+  index | type       | name       | message
+  ${0}  | ${"input"} | ${"name"}  | ${"Please enter the employee's name"}
+  ${1}  | ${"input"} | ${"id"}    | ${"Please enter the employee's ID"}
+  ${2}  | ${"input"} | ${"email"} | ${"Please enter the employee's email"}
+  `("returns questions with the specified properties", ({ index, type, name, message }) => {
+    // Arrange
+
+    // Act
+    const result = Employee.generateQuestions()[index];
+
+    // Assert
+    expect(result.type).toBe(type);
+    expect(result.name).toBe(name);
+    expect(result.message).toBe(message);
   });
 });
