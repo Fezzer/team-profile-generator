@@ -1,5 +1,5 @@
-const Employee = require("../lib/Employee");
-const Engineer = require("../lib/Engineer");
+import Employee from "../lib/Employee";
+import Engineer from "../lib/Engineer";
 
 test("Is instance of the Employee class", () =>{
   // Arrange
