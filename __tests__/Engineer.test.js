@@ -1,43 +1,66 @@
 import Employee from "../lib/Employee";
 import Engineer from "../lib/Engineer";
 
-test("Is instance of the Employee class", () =>{
-  // Arrange
-  const engineer = new Engineer();
+describe("Constructor", () => {
+  it("returns an object that inherits from Employee", () => {
+    // Act
+    const result = new Engineer();
 
-  // Assert
-  expect(engineer).toBeInstanceOf(Employee);
+    // Assert
+    expect(result).toBeInstanceOf(Employee);
+  });
+
+  it("initialises the base class", () => {
+    // Arrange
+    const name = "Bob";
+    const id = 1;
+    const email = "bob@somewhere.com";
+
+    // Act
+    const engineer = new Engineer(name, id, email, "");
+
+    // Assert
+    expect(engineer.name).toBe(name);
+    expect(engineer.id).toBe(id);
+    expect(engineer.email).toBe(email);
+  });
+
+  it("can set GitHUb account via constructor", () => {
+    // Arrange
+    const github = "GitHubUser";
+    const engineer = new Engineer("", 1, "", github);
+
+    // Act
+    const result = engineer.github;
+
+    // Assert
+    expect(result).toBe(github);
+  });
 });
 
-test("Base class is initialised", () => {
-  // Arrange
-  const name = "Bob";
-  const id = 1;
-  const email = "bob@somewhere.com"
-  
-  // Act
-  const engineer = new Engineer(name, id, email, "");
+describe("getRole", () => {
+  it('returns "Engineer"', () => {
+    // Arrange
+    const engineer = new Engineer();
 
-  // Assert
-  expect(engineer.name).toBe(name);
-  expect(engineer.id).toBe(id);
-  expect(engineer.email).toBe(email);
+    // Act
+    const result = engineer.getRole();
+
+    // Assert
+    expect(result).toBe("Engineer");
+  });
 });
 
-test("Can set GitHUb account via constructor", () => {
-  const testValue = "GitHubUser";
-  const e = new Engineer("Foo", 1, "test@test.com", testValue);
-  expect(e.github).toBe(testValue);
-});
+describe("getGithub", () => {
+  it("returns github username", () => {
+    // Arrange
+    const github = "GitHubUser";
+    const engineer = new Engineer("", 1, "", github);
 
-test("getRole() should return \"Engineer\"", () => {
-  const testValue = "Engineer";
-  const e = new Engineer("Foo", 1, "test@test.com", "GitHubUser");
-  expect(e.getRole()).toBe(testValue);
-});
+    // Act
+    const result = engineer.getGithub();
 
-test("Can get GitHub username via getGithub()", () => {
-  const testValue = "GitHubUser";
-  const e = new Engineer("Foo", 1, "test@test.com", testValue);
-  expect(e.getGithub()).toBe(testValue);
+    // Assert
+    expect(result).toBe(github);
+  });
 });

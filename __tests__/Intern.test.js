@@ -1,43 +1,66 @@
 import Employee from "../lib/Employee";
 import Intern from "../lib/Intern";
 
-test("Is instance of the Employee class", () =>{
-  // Arrange
-  const intern = new Intern();
+describe("Constructor", () => {
+  it("returns an object that inherits from Employee", () => {
+    // Act
+    const result = new Intern();
 
-  // Assert
-  expect(intern).toBeInstanceOf(Employee);
+    // Assert
+    expect(result).toBeInstanceOf(Employee);
+  });
+
+  it("initialises the base class", () => {
+    // Arrange
+    const name = "Bob";
+    const id = 1;
+    const email = "bob@somewhere.com";
+
+    // Act
+    const intern = new Intern(name, id, email, "");
+
+    // Assert
+    expect(intern.name).toBe(name);
+    expect(intern.id).toBe(id);
+    expect(intern.email).toBe(email);
+  });
+
+  it("can set school via constructor", () => {
+    // Arrange
+    const school = "UCLA";
+    const intern = new Intern("", 1, "", school);
+
+    // Act
+    const result = intern.school;
+
+    // Assert
+    expect(result).toBe(school);
+  });
 });
 
-test("Base class is initialised", () => {
-  // Arrange
-  const name = "Bob";
-  const id = 1;
-  const email = "bob@somewhere.com"
-  
-  // Act
-  const intern = new Intern(name, id, email, "");
+describe("getRole", () => {
+  it('returns "Intern"', () => {
+    // Arrange
+    const intern = new Intern();
 
-  // Assert
-  expect(intern.name).toBe(name);
-  expect(intern.id).toBe(id);
-  expect(intern.email).toBe(email);
+    // Act
+    const result = intern.getRole();
+
+    // Assert
+    expect(result).toBe("Intern");
+  });
 });
 
-test("Can set school via constructor", () => {
-  const testValue = "UCLA";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.school).toBe(testValue);
-});
+describe("getSchool", () => {
+  it("returns school", () => {
+    // Arrange
+    const school = "UCLA";
+    const intern = new Intern("", 1, "", school);
 
-test("getRole() should return \"Intern\"", () => {
-  const testValue = "Intern";
-  const e = new Intern("Foo", 1, "test@test.com", "UCLA");
-  expect(e.getRole()).toBe(testValue);
-});
+    // Act
+    const result  =intern.getSchool();
 
-test("Can get school via getSchool()", () => {
-  const testValue = "UCLA";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.getSchool()).toBe(testValue);
+    // Assert
+    expect(result).toBe(school);
+  });
 });

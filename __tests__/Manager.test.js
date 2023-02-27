@@ -1,43 +1,64 @@
 import Employee from "../lib/Employee";
 import Manager from "../lib/Manager";
 
-test("Is an instance of the Employee class", () => {
-  // Arrange
-  const manager = new Manager();
+describe("Constructor", () => {
+  it("returns an object that inherits from Employee", () => {
+    // Act
+    const result = new Manager();
 
-  // Assert
-  expect(manager).toBeInstanceOf(Employee);
+    // Assert
+    expect(result).toBeInstanceOf(Employee);
+  });
+
+  it("initialises the base class", () => {
+    // Arrange
+    const name = "Bob";
+    const id = 1;
+    const email = "bob@somewhere.com";
+
+    // Act
+    const result = new Manager(name, id, email, "");
+
+    // Assert
+    expect(result.name).toBe(name);
+    expect(result.id).toBe(id);
+    expect(result.email).toBe(email);
+  });
+
+  it("can set office number via constructor argument", () => {
+    // Arrange
+    const officeNumber = 100;
+
+    // Act
+    const result = new Manager("", 1, "", officeNumber);
+
+    expect(result.officeNumber).toBe(officeNumber);
+  });
 });
 
-test("Base class is initialised", () => {
-  // Arrange
-  const name = "Bob";
-  const id = 1;
-  const email = "bob@somewhere.com"
-  
-  // Act
-  const manager = new Manager(name, id, email, "");
+describe("getRole", () => {
+  it('returns "Manager"', () => {
+    // Arrange
+    const manager = new Manager();
 
-  // Assert
-  expect(manager.name).toBe(name);
-  expect(manager.id).toBe(id);
-  expect(manager.email).toBe(email);
+    // Act
+    const result = manager.getRole();
+
+    // Assert
+    expect(result).toBe("Manager");
+  });
 });
 
-test("Can set office number via constructor argument", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.officeNumber).toBe(testValue);
-});
+describe("getOffice", () => {
+  it("returns office number", () => {
+    // Arrange
+    const officeNumber = 100;
+    const manager = new Manager("", 1, "", officeNumber);
 
-test('getRole() should return "Manager"', () => {
-  const testValue = "Manager";
-  const e = new Manager("Foo", 1, "test@test.com", 100);
-  expect(e.getRole()).toBe(testValue);
-});
+    // Act
+    const result = manager.getOfficeNumber();
 
-test("Can get office number via getOffice()", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.getOfficeNumber()).toBe(testValue);
+    // Assert
+    expect(result).toBe(officeNumber);
+  });
 });
