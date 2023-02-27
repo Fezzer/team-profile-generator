@@ -39,7 +39,17 @@ describe("Constructor", () => {
 });
 
 describe("getRole", () => {
-  it('returns "Intern"', () => {
+  it('static returns "Intern"', () => {
+    // Arrange
+
+    // Act
+    const result = Intern.getRole();
+
+    // Assert
+    expect(result).toBe("Intern");
+  });
+
+  it('instance returns "Intern"', () => {
     // Arrange
 
     // Act

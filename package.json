@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Bootcamp week 12 challenge",
   "main": "index.js",
+  "exports": "./index.js",
+  "type": "module",
   "directories": {
     "lib": "lib"
   },

@@ -86,11 +86,21 @@ describe("getEmail", () => {
 });
 
 describe("getRole", () => {
-  it("returns \"Employee\"", () => {
+  it("static returns \"Employee\"", () => {
     // Arrange
     
     // Act
     const result = Employee.getRole();
+    
+    // Assert
+    expect(result).toBe("Employee");
+  });
+
+  it("instance returns \"Employee\"", () => {
+    // Arrange
+    const employee = new Employee();
+    // Act
+    const result = employee.getRole();
     
     // Assert
     expect(result).toBe("Employee");

@@ -39,11 +39,22 @@ describe("Constructor", () => {
 });
 
 describe("getRole", () => {
-  it('returns "Engineer"', () => {
+  it('static returns "Engineer"', () => {
     // Arrange
 
     // Act
     const result = Engineer.getRole();
+
+    // Assert
+    expect(result).toBe("Engineer");
+  });
+
+  it('instance returns "Engineer"', () => {
+    // Arrange
+    const engineer = new Engineer("", 1, "", "");
+
+    // Act
+    const result = engineer.getRole();
 
     // Assert
     expect(result).toBe("Engineer");
