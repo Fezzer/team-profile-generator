@@ -3,7 +3,7 @@ import Engineer from "./lib/Engineer.js";
 import Intern from "./lib/Intern.js";
 import inquirer from "inquirer";
 import render from "./src/page-template.js";
-import { writeFile } from "node:fs/promises";
+import { writeDataToFileAsync } from "./src/fs-helpers.js";
 
 const addEngineer = "Add a new engineer";
 const addIntern = "Add a new intern";
@@ -52,10 +52,8 @@ async function init() {
     employees.push(fromAnswers(answers));
   }
 
-
-
   const html = render(employees);
-  await writeFile("team.html", html, { encoding: "utf8" });
+  await writeDataToFileAsync("team.html", html, { encoding: "utf8" });
 }
 
 init();
