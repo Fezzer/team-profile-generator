@@ -1,4 +1,4 @@
-import { opendir, mkdir } from "node:fs/promises";
+import { opendir, mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 /**
