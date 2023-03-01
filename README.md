@@ -38,7 +38,9 @@ Add your interns.
 
 ![intern prompts](./assets/images/screenshot-intern.png)
 
-When you have added all of your engineers and interns, select `Finish building your team`. Your team will be built into an HTML file located `.\output\team.html`.
+When you have added all of your engineers and interns, select `Finish building your team`. Your team will be built into an HTML file located at `.\output\team.html`.
+
+![output file sample](./assets/images/screenshot-output.png)
 
 Please be sure to save this file to a different location before running the app again as the output file will be overwritten.
 
