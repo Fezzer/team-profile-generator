@@ -8,7 +8,6 @@ import { writeDataToFileAsync } from "./src/fs-helpers.js";
 const addEngineer = "Add a new engineer";
 const addIntern = "Add a new intern";
 const finish = "Finish building your team";
-const employees = [];
 
 const nextQuestion = [{
   type: "list",
@@ -16,6 +15,8 @@ const nextQuestion = [{
   message: "What do you want to do next?",
   choices: [addEngineer, addIntern, finish]
 }];
+
+const employees = [];
 
 async function init() {
   const managerQuestions = Manager.generateQuestions();
@@ -53,7 +54,7 @@ async function init() {
   }
 
   const html = render(employees);
-  await writeDataToFileAsync("team.html", html, { encoding: "utf8" });
+  await writeDataToFileAsync("./output", "team.html", html);
 }
 
 init();
