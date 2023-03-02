@@ -23,5 +23,5 @@ export async function checkFolderExistsAsync(dir) {
 export async function writeDataToFileAsync(dir, file, data) {
   await checkFolderExistsAsync(dir);
   const savePath = join(dir, file);
-  await writeFile(savePath, data, { encoding: "utf8"});
+  await writeFile(savePath, data, { encoding: "utf8" });
 }
